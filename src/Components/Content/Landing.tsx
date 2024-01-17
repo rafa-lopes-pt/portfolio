@@ -76,7 +76,7 @@ function Photo({ screenState }: MAIN_COMPONENT_PROPS) {
                     ></motion.div>
                     <div className="photo-container__shape photo-container__shape--2"></div>
                     <img
-                        // src="photo.jpg"
+                        src="Photo.png"
                         alt="Profile Photo"
                         className="photo-container__photo"
                     />
