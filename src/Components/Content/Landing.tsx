@@ -1,11 +1,4 @@
-import {
-    AnimatePresence,
-    Variant,
-    Variants,
-    motion,
-    useMotionValue,
-} from "framer-motion";
-import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SCREEN_STATE } from "./Content";
 
 type MAIN_COMPONENT_PROPS = {
