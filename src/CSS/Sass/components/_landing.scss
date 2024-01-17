@@ -1,0 +1,252 @@
+@use "../base/colors";
+
+.photo-container {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    @media (hover: none) and (orientation: portrait) {
+        top: 50%;
+        left: 50%;
+    }
+
+    opacity: 0.95;
+    height: 20vmax;
+    aspect-ratio: 5/7;
+
+    filter: hue-rotate(-20deg);
+
+    & > * {
+        border-top-left-radius: 30%;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+    }
+
+    &__shape {
+        &--1 {
+            background-color: map-get($map: colors.$light-theme, $key: c3);
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 4px 20px 8px #0009 inset;
+        }
+        &--2 {
+            background-color: map-get($map: colors.$light-theme, $key: c2);
+            transform: translate(-55%, -55%);
+            box-shadow: 0px 4px 15px 8px #0005 inset;
+        }
+    }
+    &__elipsis {
+        background-color: transparent;
+        border-radius: 100%;
+        border: 3px solid;
+        border-color: map-get($map: colors.$light-theme, $key: c3);
+        width: 100%;
+        height: 145%;
+    }
+    &__photo {
+        transform: translate(-55%, -55%) scale(90%);
+        background: url("Photo.png");
+        opacity: 0.85;
+        background-blend-mode: hard-light;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(95%) grayscale(70%) hue-rotate(200deg);
+    }
+}
+
+.landing-header {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+
+    @media (hover: none) and (orientation: portrait) {
+        top: 15%;
+        left: 50%;
+        width: 70%;
+        & [data-break="1"] {
+            word-spacing: 100vw;
+        }
+    }
+    @media (hover: none) and (orientation: landscape) {
+        font-size: 1.5rem;
+    }
+
+    & h2 {
+        font-size: 0.5em;
+    }
+}
+
+.about-text {
+    text-align: justify;
+    max-width: 35%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // z-index: -1;
+    max-height: 40%;
+    padding: 0 0.5em;
+    overflow-y: auto;
+
+    @media (hover: none) {
+        @media (orientation: portrait) {
+            max-width: 70%;
+            width: max-content;
+        }
+        @media (orientation: landscape) {
+            max-width: 45%;
+            width: max-content;
+            height: 50%;
+            overflow-y: auto;
+        }
+    }
+
+    & > p {
+        margin-bottom: 1em;
+    }
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg) scale(100%);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(90%);
+    }
+
+    to {
+        transform: rotate(360deg) scale(100%);
+    }
+}
+@keyframes centered-spinning {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.tech-stack {
+    &__wrapper {
+        position: absolute;
+        width: 20%;
+        height: 75%;
+        position: absolute;
+        top: 50%;
+        left: 85%;
+        // background-color: green;
+        transform: translate(-50%, -50%);
+        @media (hover: none) {
+            @media (orientation: portrait) {
+                top: 77.5%;
+                left: 50%;
+                width: 80%;
+                height: 30%;
+            }
+        }
+
+        overflow: visible;
+    }
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    animation: centered-spinning 10s both reverse linear infinite;
+    // background-color: red;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+
+    &__item {
+        // background-color: #45f;
+        border-radius: 100%;
+        width: 5vmax;
+        height: 5vmax;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        color: white;
+
+        animation: spinning 10s both linear infinite;
+
+        & > img {
+            background-color: rgba(
+                map-get($map: colors.$light-theme, $key: c4),
+                $alpha: 1
+            );
+            // border: 1px solid black;
+            border-radius: 100%;
+            padding: 0.5rem;
+
+            animation: spinning 8s both linear infinite;
+            position: absolute;
+
+            $bg-color: rgba(
+                map-get(
+                    $map: colors.$light-theme,
+                    $key: c4,
+                ),
+                $alpha: 0.1
+            );
+            box-shadow: 2px 2px 20px 2px rgba($bg-color, 1);
+
+            @mixin randomize-direction() {
+                $direction: random() * 2;
+                @if ($direction>1) {
+                    animation-direction: normal;
+                } @else {
+                    animation-direction: reverse;
+                }
+            }
+            &:nth-child(1) {
+                @include randomize-direction();
+                top: 30% * 0.5;
+                left: -35% * 0.5;
+                z-index: 3;
+                background-color: $bg-color;
+            }
+            &:nth-child(2) {
+                @include randomize-direction();
+                top: -30%;
+                left: 0%;
+                z-index: 2;
+                background-color: darken($bg-color, 10%);
+            }
+            &:nth-child(3) {
+                @include randomize-direction();
+                top: 40%;
+                left: 30%;
+                z-index: 1;
+                background-color: darken($bg-color, 20%);
+            }
+        }
+
+        position: relative;
+        $diameterRatio: 0.225vmax;
+        &:nth-child(1) {
+            left: -25 * $diameterRatio;
+        }
+        &:nth-child(2) {
+            left: 20 * $diameterRatio;
+        }
+        &:nth-child(3) {
+            left: -20 * $diameterRatio;
+        }
+        &:nth-child(4) {
+            left: 25 * $diameterRatio;
+        }
+    }
+}

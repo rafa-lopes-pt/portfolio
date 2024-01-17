@@ -1,0 +1,52 @@
+@use "./colors";
+
+@mixin scrollbar() {
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 18px;
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 6px;
+        border: 4px solid
+            rgba(
+                $color: map-get($map: colors.$light-theme, $key: "c4"),
+                $alpha: 0.5
+            );
+        background-clip: padding-box;
+        border-radius: 7px;
+        background-color: rgba(
+            map-get($map: colors.$light-theme, $key: "c4"),
+            0.7
+        );
+        box-shadow: inset -1px -1px 0px rgba(241, 0, 0, 0.05),
+            inset 1px 1px 0px map-get($map: colors.$light-theme, $key: "c4");
+    }
+    &::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+}
+* {
+    color: map-get($map: colors.$light-theme, $key: c5);
+    user-select: none;
+    @include scrollbar();
+}
+
+:root {
+    font-size: clamp(11px, 2vw, 18px);
+}
+
+:root,
+body,
+#root {
+    height: 100%;
+    overflow: hidden;
+    &::-webkit-scrollbar {
+        opacity: 0;
+        display: none;
+    }
+}

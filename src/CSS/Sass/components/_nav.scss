@@ -1,0 +1,107 @@
+@use "../base/colors";
+
+.nav {
+    text-align: end;
+    padding: 1em;
+
+    height: 8svh;
+    position: relative;
+    z-index: 1;
+    &__icon {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        font-size: 1.75rem;
+        transform: translate(-50%, -50%);
+    }
+    &__link {
+        margin-right: 2em;
+        padding: 0.5em 2em 0.5em 2em;
+        border: 2px solid map-get(colors.$light-theme, c5);
+
+        transition: all 0.25s ease-out, box-shadow 0.1s ease;
+
+        &:hover {
+            $color: map-get(colors.$light-theme, c4);
+            border-color: $color;
+            color: map-get(colors.$light-theme, c1);
+            background-image: linear-gradient($color, darken($color, 1.5));
+        }
+        &:active {
+            $color: map-get(colors.$light-theme, c4);
+            border-color: $color;
+            color: map-get(colors.$light-theme, c1);
+            background-image: linear-gradient($color, darken($color, 1.5));
+            box-shadow: inset 2px 2px 20px 5px map-get(colors.$light-theme, c3);
+        }
+    }
+    @media (hover: none) {
+        @media (orientation: landscape) {
+            height: 11svh;
+            &__icon {
+                right: 0.5em;
+            }
+        }
+        &__icon {
+            display: inline-block;
+        }
+        &__link {
+            display: none;
+        }
+        &__modal &__link {
+            display: inline;
+        }
+    }
+
+    &__overlay {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(
+            map-get($map: colors.$light-theme, $key: "c2"),
+            0.5
+        );
+        backdrop-filter: blur(5px);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -2;
+    }
+    &__modal {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        min-height: fit-content;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        justify-content: center;
+
+        padding: 2em;
+        text-align: left;
+        background-color: map-get($map: colors.$light-theme, $key: "c1");
+        box-shadow: 2px 2px 20px 2px
+                map-get($map: colors.$light-theme, $key: "c5"),
+            inset 1px 1px 20px 1px
+                map-get($map: colors.$light-theme, $key: "c4");
+
+        &__title {
+            width: 100%;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .nav__link {
+            margin: 0em;
+            margin-top: 1em;
+        }
+        .nav__icon {
+            top: 2em;
+        }
+    }
+}

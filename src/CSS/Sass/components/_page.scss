@@ -1,0 +1,103 @@
+@use "../base/colors";
+
+body {
+    background-color: map-get($map: colors.$light-theme, $key: c1);
+}
+main {
+    height: 80svh;
+    position: relative;
+    @media (hover: none) {
+        @media (orientation: portrait) {
+            height: 90svh;
+        }
+    }
+
+    // &,
+    // & > * {
+    //      border: 2px solid red;
+    // }
+}
+
+.navigation-btns {
+    display: flex;
+    place-content: center;
+    justify-items: space-around;
+    align-items: center;
+    padding: 0.5em 1.5em;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    @media (hover: none) {
+        @media (orientation: portrait) {
+            &--row {
+                flex-direction: row;
+                bottom: 0svh;
+            }
+            &--col {
+                flex-direction: column;
+                font-size: 1.25em;
+            }
+        }
+        @media (orientation: landscape) {
+            bottom: -10svh;
+            transform: scale(75%);
+        }
+    }
+}
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    z-index: -10;
+    position: absolute;
+    filter: blur(8px);
+    opacity: 0.3;
+    user-select: none;
+    overflow: hidden;
+    @media (hover: none) {
+        // filter: blur(4px);
+    }
+
+    &__text {
+        //FIX: keep blur? or not?
+        filter: blur(0px);
+        @media (hover: none) {
+            filter: blur(0px);
+        }
+        font-family: monospace;
+        font-size: 25vmin;
+        line-height: 90%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    &__shape {
+        border-radius: 100%;
+        border: 2px solid map-get($map: colors.$light-theme, $key: c3);
+    }
+
+    $shape-count: 15;
+    $shape-size: 75%;
+
+    @for $i from 1 through $shape-count {
+        $x: random();
+        $y: random();
+        $stroke: random() * (8-2);
+
+        $angle: random() * (360deg);
+        .bg__shape--#{$i} {
+            position: absolute;
+            width: $shape-size;
+            height: $shape-size;
+            border-width: $stroke + 0px;
+            top: $y;
+            left: $x;
+            transform: rotate($angle) translate(-50%, -50%);
+        }
+    }
+}
