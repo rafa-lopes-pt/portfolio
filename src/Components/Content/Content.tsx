@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Landing from "./Landing";
 import Projects from "./Projects";
-
 export enum SCREEN_STATE {
     HOME = "Back",
     PROJECTS = "Projects",
@@ -67,9 +66,9 @@ function BtnGroup({
             <a
                 className="btn"
                 href="./Rafael-Lopes-Frontend-Developer-CV.pdf"
-                download="./Rafael-Lopes-Frontend-Developer-CV.pdf"
+                download="Rafael-Lopes-Frontend-Developer-CV.pdf"
             >
-                Download CV{" "}
+                Download CV
                 <i className="ml-1 text-c1 fa-solid fa-download"></i>
             </a>
         </div>
