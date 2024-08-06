@@ -65,8 +65,8 @@ function BtnGroup({
             )}
             <a
                 className="btn"
-                href="./Rafael-Lopes-Frontend-Developer-CV.pdf"
-                download="Rafael-Lopes-Frontend-Developer-CV.pdf"
+                href="./Rafael_Lopes_Fullstack_Developer_CV.pdf"
+                download="Rafael_Lopes_Fullstack_Developer_CV.pdf"
             >
                 Download CV
                 <i className="ml-1 text-c1 fa-solid fa-download"></i>

@@ -47,7 +47,7 @@ function Contacts({ className }: { className?: string }) {
     return (
         <>
             <a
-                href="https://www.linkedin.com/in/rafael-lopes-frontend-developer/"
+                href="https://www.linkedin.com/in/rafael-lopes-software-developer/"
                 className={`nav__link ${className}`}
                 target="_Blank"
             >

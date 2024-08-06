@@ -144,7 +144,7 @@ function Text({ screenState }: MAIN_COMPONENT_PROPS) {
                             rotateX: 60,
                         }}
                     >
-                        I'm a front-end developer based in Portugal
+                        I'm a full-end developer based in Portugal
                     </motion.h2>
                 </motion.div>
             )}
@@ -178,20 +178,17 @@ function About({ screenState }: MAIN_COMPONENT_PROPS) {
             className="about-text"
         >
             <p>
-                Hey there! I'm Rafael, a 23-year-old Portuguese frontend
-                developer with a love for crafting beautiful digital landscapes
-                using modern tools such as React and Sass.
+                Enthusiastic full-stack software developer with experience in building applications with real-
+                world use and leveraging the benefits of agile development environments.
             </p>
             <p>
-                From fixing stuff in my shop, to crafting seamless user
-                interfaces, my passion lies in turning ideas into reality. My
-                journey in frontend development is more than just lines of code;
-                it's an exploration of creativity, problem-solving, and making
-                technology seamlessly blend with the user's world.
+                Skilled in frontend development with technologies like React.js and Next.js, as well as
+                backend technologies like Node.js and both relational and document databases. Known for a
+                problem solving attitude and collaboration skills.
             </p>
-            <p>
-                Let's build something extraordinary together — where code meets
-                creativity, and interfaces come to life!
+            <p className="font-bold text-center">
+                This website is currently under heavy maintenance...
+                Bear with me for something way better!
             </p>
         </motion.div>
     );
